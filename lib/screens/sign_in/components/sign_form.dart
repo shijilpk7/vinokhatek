@@ -36,13 +36,13 @@ class _SignFormState extends State<SignForm> {
 
   _getLocation() async {
     currentLocation = await LocationService.getLocation();
-    List<Placemark> placemarks = await placemarkFromCoordinates(
+    if (currentLocation != null) {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
         currentLocation!.latitude, currentLocation!.longitude);
     Provider.of<CommonDataProvider>(context, listen: false)
         .addPlacemark(placemarks);
-    if (currentLocation == null) {
+    } else
       return;
-    }
   }
 
   void addError({String? error}) {

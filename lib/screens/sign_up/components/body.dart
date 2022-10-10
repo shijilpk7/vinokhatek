@@ -5,6 +5,7 @@ import 'package:vinokhatek/constants.dart';
 import 'package:vinokhatek/models/services/firebase_services.dart';
 import 'package:vinokhatek/size_config.dart';
 
+import '../../../models/services/common_data_provider.dart';
 import '../../home/home_screen.dart';
 import 'sign_up_form.dart';
 
@@ -37,6 +38,8 @@ class Body extends StatelessWidget {
                     SocalCard(
                       icon: "assets/icons/google-icon.svg",
                       press: () {
+                        Provider.of<CommonDataProvider>(context, listen: false)
+                            .adminCheck(false);
                         //google login
                         Provider.of<GoogleSignInProvider>(context,
                                 listen: false)

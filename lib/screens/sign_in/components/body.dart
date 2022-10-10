@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:vinokhatek/components/no_account_text.dart';
 import 'package:vinokhatek/components/socal_card.dart';
 import 'package:vinokhatek/constants.dart';
+import 'package:vinokhatek/models/services/common_data_provider.dart';
 import 'package:vinokhatek/models/services/firebase_services.dart';
 import '../../../size_config.dart';
 import '../../home/home_screen.dart';
@@ -44,6 +45,8 @@ class Body extends StatelessWidget {
                     SocalCard(
                       icon: "assets/icons/google-icon.svg",
                       press: () {
+                        Provider.of<CommonDataProvider>(context, listen: false)
+                            .adminCheck(false);
                         //google login
                         Provider.of<GoogleSignInProvider>(context,
                                 listen: false)

@@ -19,7 +19,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   CommonDataProvider? _commonDataProvider;
-    @override
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _commonDataProvider = Provider.of<CommonDataProvider>(context);
@@ -33,18 +33,25 @@ class _BodyState extends State<Body> {
           children: [
             SizedBox(height: getProportionateScreenHeight(20)),
             HomeHeader(),
-            
+
             SizedBox(height: getProportionateScreenWidth(10)),
             _commonDataProvider!.isAdmin!
                 ? Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      child: Text('Logged in as Admin',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700,fontSize: 20),),
-                    ),
-                  ],
-                )
-                :SizedBox(), SizedBox(height: getProportionateScreenHeight(10)),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                        child: Text(
+                          'Logged in as Admin',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20),
+                        ),
+                      ),
+                    ],
+                  )
+                : SizedBox(),
+            SizedBox(height: getProportionateScreenHeight(10)),
             PopularProducts(),
             SizedBox(height: getProportionateScreenWidth(30)),
             LocationDetails(),

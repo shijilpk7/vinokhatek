@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vinokhatek/components/custom_surfix_icon.dart';
 import 'package:vinokhatek/components/default_button.dart';
 import 'package:vinokhatek/components/form_error.dart';
 import 'package:vinokhatek/screens/complete_profile/complete_profile_screen.dart';
 
 import '../../../constants.dart';
+import '../../../models/services/common_data_provider.dart';
 import '../../../size_config.dart';
 
 
@@ -51,6 +53,8 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(
             text: "Continue",
             press: () {
+              Provider.of<CommonDataProvider>(context, listen: false)
+                  .adminCheck(false);
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 // if all are valid then go to success screen
